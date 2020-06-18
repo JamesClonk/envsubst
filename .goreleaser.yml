@@ -13,10 +13,7 @@ build:
     - amd64
 
 archive:
-  format: tar.gz
-  format_overrides:
-    - goos: windows
-      format: zip
+  format: binary
   name_template: "{{.Binary}}_{{.Version}}_{{.Os}}-{{.Arch}}"
   replacements:
     amd64: 64bit
