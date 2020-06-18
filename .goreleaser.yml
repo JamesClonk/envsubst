@@ -1,0 +1,28 @@
+# See https://goreleaser.com/ for details
+# Build customization
+build:
+  main: cmd/envsubst/main.go
+  binary: envsubst
+  env:
+    - CGO_ENABLED=0
+  goos:
+    - darwin
+    - linux
+    - windows
+  goarch:
+    - amd64
+
+archive:
+  format: tar.gz
+  format_overrides:
+    - goos: windows
+      format: zip
+  name_template: "{{.Binary}}_{{.Version}}_{{.Os}}-{{.Arch}}"
+  replacements:
+    amd64: 64bit
+    386: 32bit
+    darwin: macOS
+    linux: Linux
+    windows: Windows
+release:
+  draft: true
